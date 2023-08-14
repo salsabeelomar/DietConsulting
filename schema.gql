@@ -1,0 +1,155 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  """Question id """
+  id: Int!
+
+  """User Title """
+  email: String!
+
+  """User Role """
+  role: String!
+
+  """User FirstName """
+  fname: String!
+
+  """User userName """
+  username: String!
+
+  """User MiddleName """
+  mname: String!
+
+  """User LastName"""
+  lname: String!
+
+  """User Creation Time"""
+  createdAt: DateTime!
+
+  """User Updated Time"""
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Question {
+  """Question id """
+  id: Int!
+
+  """Question Title """
+  title: String!
+
+  """Question Description """
+  description: String!
+
+  """Question user id """
+  userId: Int!
+
+  """Question User Information """
+  user: User!
+
+  """Question Creation Time"""
+  createdAt: DateTime!
+
+  """Question Updated Time"""
+  updatedAt: DateTime!
+}
+
+type Answer {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Draft {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Auth {
+  token: String!
+  user: User!
+}
+
+type Query {
+  question(page: Float!): [Question!]!
+  answer(id: Int!): Answer!
+  draft(id: Int!): Draft!
+}
+
+type Mutation {
+  createQuestion(addQuestion: CreateQuestionInput!): Question!
+  updateQuestion(updateQuestion: UpdateQuestionInput!): String!
+  removeQuestion(id: Int!): String!
+  createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
+  updateAnswer(updateAnswerInput: UpdateAnswerInput!): Answer!
+  removeAnswer(id: Int!): Answer!
+  signIn(login: LoginInput!): Auth!
+  signup(newUser: CreateAuthInput!): Auth!
+  createDraft(createDraftInput: CreateDraftInput!): Draft!
+  updateDraft(updateDraftInput: UpdateDraftInput!): Draft!
+  removeDraft(id: Int!): Draft!
+}
+
+input CreateQuestionInput {
+  """Title for Question"""
+  title: String!
+
+  """Description for Question"""
+  description: String!
+}
+
+input UpdateQuestionInput {
+  """Title for Question"""
+  title: String
+
+  """Description for Question"""
+  description: String
+  id: Int!
+}
+
+input CreateAnswerInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateAnswerInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input LoginInput {
+  username: String
+  email: String
+  password: String!
+}
+
+input CreateAuthInput {
+  username: String!
+  lname: String!
+  fname: String!
+  mname: String!
+  email: String!
+  role: Roles!
+  password: String!
+}
+
+enum Roles {
+  consultant
+  user
+}
+
+input CreateDraftInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateDraftInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}

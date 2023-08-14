@@ -1,0 +1,1 @@
+export const DATABASE = { DATABASE_PROVIDE: 'SEQUELIZE' };
