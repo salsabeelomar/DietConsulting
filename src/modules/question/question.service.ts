@@ -62,6 +62,7 @@ export class QuestionService {
       transaction,
       offset,
       limit: LIMIT,
+      order: [['createdAt', 'DESC']],
     });
 
     this.winstonLogger.log(` Get All Questions Successfully `);

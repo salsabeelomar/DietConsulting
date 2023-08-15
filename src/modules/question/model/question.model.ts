@@ -54,9 +54,9 @@ export class Question extends Model {
   })
   createdBy: number;
 
-  @BelongsTo(() => User)
+  @BelongsTo(() => User, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
   user: User;
 
-  @HasMany(() => Answer)
+  @HasMany(() => Answer, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
   answers: Answer[];
 }

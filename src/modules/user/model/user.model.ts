@@ -10,7 +10,7 @@ import { regexPassword } from 'src/common/constant/passwordRegex';
 import { Roles } from 'src/common/types/role.type';
 
 @Table({
-  tableName: 'user',
+  tableName: 'users',
 })
 export class User extends Model {
   @Column({
@@ -83,6 +83,6 @@ export class User extends Model {
   })
   createdBy: number;
 
-  @BelongsTo(() => User)
+  @BelongsTo(() => User, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
   user: User;
 }
