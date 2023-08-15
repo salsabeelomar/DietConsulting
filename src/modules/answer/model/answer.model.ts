@@ -5,6 +5,7 @@ import {
   Column,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from 'sequelize-typescript';
 import { Question } from 'src/modules/question/model/question.model';
 import { User } from 'src/modules/user/model/user.model';
@@ -32,9 +33,15 @@ export class Answer extends Model {
   description: string;
 
   @Column({
-    type: DataType.ARRAY(DataType.STRING),
+    type: DataType.STRING,
   })
-  recommendations: [string];
+  recommendations: string[];
+
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false,
+  })
+  isDraft: boolean;
 
   @ForeignKey(() => User)
   @Column({
@@ -78,4 +85,5 @@ export class Answer extends Model {
 
   @BelongsTo(() => Question)
   question: Question;
+
 }

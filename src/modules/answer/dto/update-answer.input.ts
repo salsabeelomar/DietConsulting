@@ -5,4 +5,7 @@ import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 export class UpdateAnswerInput extends PartialType(CreateAnswerInput) {
   @Field(() => Int)
   id: number;
+
+  @Field(() => Boolean, { description: 'Answer id ' })
+  isDraft: boolean;
 }

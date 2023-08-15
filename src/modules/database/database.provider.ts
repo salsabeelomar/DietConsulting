@@ -4,7 +4,6 @@ import { DATABASE } from 'src/common/constant/database.constant';
 import { User } from '../user/model/user.model';
 import { Question } from '../question/model/question.model';
 import { Answer } from '../answer/model/answer.model';
-import { Draft } from '../draft/model/draft.model';
 
 export const databaseProvider = [
   {
@@ -19,7 +18,7 @@ export const databaseProvider = [
         },
       });
 
-      sequelize.addModels([User, Question, Answer, Draft]);
+      sequelize.addModels([User, Question, Answer]);
       await sequelize.sync();
       return sequelize;
     },

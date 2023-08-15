@@ -2,6 +2,37 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Answer {
+  """Answer Title """
+  title: String!
+
+  """Answer Description """
+  description: String!
+
+  """Answer id """
+  id: Int!
+
+  """Question id """
+  questionId: Int!
+
+  """Answer id """
+  isDraft: Boolean!
+
+  """Answer id """
+  recommendations: String!
+
+  """Question Creation Time"""
+  createdAt: DateTime!
+
+  """Question Updated Time"""
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type User {
   """Question id """
   id: Int!
@@ -31,11 +62,6 @@ type User {
   updatedAt: DateTime!
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
 type Question {
   """Question id """
   id: Int!
@@ -52,21 +78,14 @@ type Question {
   """Question User Information """
   user: User!
 
+  """Question User Information """
+  answers: [Answer!]!
+
   """Question Creation Time"""
   createdAt: DateTime!
 
   """Question Updated Time"""
   updatedAt: DateTime!
-}
-
-type Answer {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-type Draft {
-  """Example field (placeholder)"""
-  exampleField: Int!
 }
 
 type Auth {
@@ -76,8 +95,7 @@ type Auth {
 
 type Query {
   question(page: Float!): [Question!]!
-  answer(id: Int!): Answer!
-  draft(id: Int!): Draft!
+  findAll: [Answer!]!
 }
 
 type Mutation {
@@ -85,13 +103,10 @@ type Mutation {
   updateQuestion(updateQuestion: UpdateQuestionInput!): String!
   removeQuestion(id: Int!): String!
   createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
-  updateAnswer(updateAnswerInput: UpdateAnswerInput!): Answer!
-  removeAnswer(id: Int!): Answer!
+  updateAnswer(updateAnswerInput: UpdateAnswerInput!): String!
+  removeAnswer(id: Int!): String!
   signIn(login: LoginInput!): Auth!
   signup(newUser: CreateAuthInput!): Auth!
-  createDraft(createDraftInput: CreateDraftInput!): Draft!
-  updateDraft(updateDraftInput: UpdateDraftInput!): Draft!
-  removeDraft(id: Int!): Draft!
 }
 
 input CreateQuestionInput {
@@ -112,13 +127,37 @@ input UpdateQuestionInput {
 }
 
 input CreateAnswerInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Answer Title """
+  title: String!
+
+  """Answer Description """
+  description: String!
+
+  """Question id """
+  questionId: Int!
+
+  """Answer id """
+  isDraft: Boolean!
+
+  """Answer id """
+  recommendations: [String!]!
 }
 
 input UpdateAnswerInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  """Answer Title """
+  title: String
+
+  """Answer Description """
+  description: String
+
+  """Question id """
+  questionId: Int
+
+  """Answer id """
+  isDraft: Boolean!
+
+  """Answer id """
+  recommendations: [String!]
   id: Int!
 }
 
@@ -141,15 +180,4 @@ input CreateAuthInput {
 enum Roles {
   consultant
   user
-}
-
-input CreateDraftInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateDraftInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
 }

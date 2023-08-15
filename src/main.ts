@@ -21,7 +21,6 @@ async function bootstrap() {
 
   app.useGlobalGuards(new AuthGuard(jwt, userService, reflector));
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalGuards(new AuthGuard(jwt, userService, reflector));
   await app.listen(3000);
 }
 bootstrap();

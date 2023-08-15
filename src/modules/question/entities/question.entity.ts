@@ -1,4 +1,5 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Answer } from 'src/modules/answer/entities/answer.entity';
 import { User } from 'src/modules/user/entities/user.enitiy';
 
 @ObjectType()
@@ -17,6 +18,9 @@ export class Question {
 
   @Field(() => User, { description: 'Question User Information ' })
   user: User;
+
+  @Field(() => [Answer], { description: 'Question User Information ' })
+  answers: Answer[];
 
   @Field(() => Date, { description: 'Question Creation Time' })
   createdAt: Date;

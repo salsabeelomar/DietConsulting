@@ -12,8 +12,8 @@ import { Question } from './model/question.model';
 import { Transaction } from 'sequelize';
 import { CheckExisting } from 'src/common/utils/checkExisting';
 import { User } from '../user/model/user.model';
-import { Answer } from '../answer/entities/answer.entity';
 import { LIMIT } from 'src/common/constant/pagginationLimit.constant';
+import { Answer } from '../answer/model/answer.model';
 
 @Injectable()
 export class QuestionService {
@@ -51,18 +51,33 @@ export class QuestionService {
           model: User,
           attributes: ['id', 'username'],
         },
+        {
+          model: Answer,
+          attributes: ['title', 'description', 'recommendations'],
+          where: {
+            isDraft: false,
+          },
+        },
       ],
       transaction,
       offset,
       limit: LIMIT,
     });
+
     this.winstonLogger.log(` Get All Questions Successfully `);
 
     return questions;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} question`;
+  async getUserQuestions(userId: number) {
+    const userQues = await this.questionRepo.findAll({
+      attributes: ['id', 'title', 'description'],
+      where: {
+        userId,
+      },
+    });
+    this.winstonLogger.log(`Get All Question of User With id = ${userId}`);
+    return userQues;
   }
 
   async update(

@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { QuestionModule } from './modules/question/question.module';
 import { AnswerModule } from './modules/answer/answer.module';
-import { DraftModule } from './modules/draft/draft.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { GraphqlModules } from './modules/graphql/graphql.module';
 import { DatabaseModule } from './modules/database/database.module';
@@ -21,7 +20,6 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
     QuestionModule,
     AnswerModule,
     AuthModule,
-    DraftModule,
     GraphqlModules,
     DatabaseModule,
     UserModule,

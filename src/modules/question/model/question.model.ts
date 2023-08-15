@@ -57,5 +57,6 @@ export class Question extends Model {
   @BelongsTo(() => User)
   user: User;
 
-  @HasMany(() => Answer) answers?: Answer[];
+  @HasMany(() => Answer)
+  answers: Answer[];
 }

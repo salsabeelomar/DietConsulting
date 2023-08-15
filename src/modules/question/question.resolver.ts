@@ -1,4 +1,5 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { UseInterceptors } from '@nestjs/common';
 import { QuestionService } from './question.service';
 import { Question } from './entities/question.entity';
 import { CreateQuestionInput } from './dto/create-question.input';
@@ -6,7 +7,9 @@ import { UpdateQuestionInput } from './dto/update-question.input';
 import { TransactionDeco } from 'src/common/decorator/transaction.decorator';
 import { User } from 'src/common/decorator/user.decorator';
 import { Transaction } from 'sequelize';
+import { TransactionInter } from 'src/common/interceptor/Transaction.interceptor';
 
+@UseInterceptors(TransactionInter)
 @Resolver(() => Question)
 export class QuestionResolver {
   constructor(private readonly questionService: QuestionService) {}
@@ -28,11 +31,6 @@ export class QuestionResolver {
   findAll(@Args('page') page: number, @TransactionDeco() trans: Transaction) {
     return this.questionService.findAll(page, trans);
   }
-
-  // @Query(() => Question, { name: 'question' })
-  // findOne(@Args('id', { type: () => Int }) id: number) {
-  //   return this.questionService.findOne(id);
-  // }
 
   @Mutation(() => String)
   updateQuestion(
