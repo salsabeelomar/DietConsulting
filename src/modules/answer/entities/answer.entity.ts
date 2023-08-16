@@ -1,4 +1,4 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectType, Field, ID } from '@nestjs/graphql';
 
 @ObjectType()
 export class Answer {
@@ -8,10 +8,10 @@ export class Answer {
   @Field(() => String, { description: 'Answer Description ' })
   description: string;
 
-  @Field(() => Int, { description: 'Answer id ' })
+  @Field(() => ID, { description: 'Answer id ' })
   id: number;
 
-  @Field(() => Int, { description: 'Question id ' })
+  @Field(() => ID, { description: 'Question id ' })
   questionId: number;
 
   @Field(() => Boolean, { description: 'Answer id ' })

@@ -10,10 +10,10 @@ type Answer {
   description: String!
 
   """Answer id """
-  id: Int!
+  id: ID!
 
   """Question id """
-  questionId: Int!
+  questionId: ID!
 
   """Answer id """
   isDraft: Boolean!
@@ -35,7 +35,7 @@ scalar DateTime
 
 type User {
   """Question id """
-  id: Int!
+  id: ID!
 
   """User Title """
   email: String!
@@ -64,7 +64,7 @@ type User {
 
 type Question {
   """Question id """
-  id: Int!
+  id: ID!
 
   """Question Title """
   title: String!
@@ -73,7 +73,7 @@ type Question {
   description: String!
 
   """Question user id """
-  userId: Int!
+  userId: ID!
 
   """Question User Information """
   users: User!
