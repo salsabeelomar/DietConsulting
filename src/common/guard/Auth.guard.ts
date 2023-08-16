@@ -20,9 +20,7 @@ export class AuthGuard implements CanActivate {
     private readonly reflect: Reflector,
   ) {}
 
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
+  async canActivate(context: ExecutionContext) {
     const isPublic = this.reflect.get('isPublic', context.getHandler());
     if (isPublic) return true;
 
@@ -37,7 +35,7 @@ export class AuthGuard implements CanActivate {
     });
     try {
       const decoded = this.jwtService.verify(token);
-      const user = this.userService.getUserById(decoded.sub);
+      const user = await this.userService.getUserById(decoded.sub);
 
       request.user = user;
     } catch (error) {

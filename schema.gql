@@ -76,7 +76,7 @@ type Question {
   userId: Int!
 
   """Question User Information """
-  user: User!
+  users: User!
 
   """Question User Information """
   answers: [Answer!]!

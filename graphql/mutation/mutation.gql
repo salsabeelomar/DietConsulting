@@ -1,0 +1,57 @@
+type Mutation {
+  createQuestion(title: String!, description: String!) @http(
+		method:POST,
+		url: "http://localhost:3000/graphql"
+	):  Question!
+  updateQuestion(title: String, description: String, id: ID!) @http(
+		method:POST,
+		url: "http://localhost:3000/graphql"
+	):String!
+  removeQuestion(id: ID!) @http(
+		method:POST,
+		url: "http://localhost:3000/graphql"
+	): String!
+  createAnswer(
+    title: String!
+    description: String!
+    questionId: Int!
+    isDraft: Boolean!
+    recommendations: [String!]!
+  ) @http(
+		method:POST,
+		url: "http://localhost:3000/graphql"
+	) :Answer!
+  updateAnswer(
+    title: String
+    description: String
+    questionId: ID!
+    isDraft: Boolean!
+    recommendations: [String!]
+    id: ID!
+  ) @http(
+		method:POST,
+		url: "http://localhost:3000/graphql"
+	): String!
+  removeAnswer(id: ID!) @http(
+		method:POST,
+		url: "http://localhost:3000/graphql"
+	): String!
+
+  signIn(username: String, email: String, password: String!) @http(
+		method:POST,
+		url: "http://localhost:3000/graphql"
+	): Auth! 
+
+  signup(
+    username: String!
+    lname: String!
+    fname: String!
+    mname: String!
+    email: String!
+    role: Roles!
+    password: String!
+  ) @http(
+		method:POST,
+		url: "http://localhost:3000/graphql"
+	): Auth!
+}

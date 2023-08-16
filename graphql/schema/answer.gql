@@ -1,0 +1,18 @@
+type Answer @model {
+  # Answer id
+  id: ID!
+  # Answer Title
+  title: String!
+  # Answer Description
+  description: String!
+  # Question id
+  questionId: Int!
+  # Answer id
+  isDraft: Boolean!
+  # Answer id
+  recommendations: String!
+  # Question Creation Time
+  createdAt: DateTime!
+  # Question Updated Time
+  updatedAt: DateTime!
+}

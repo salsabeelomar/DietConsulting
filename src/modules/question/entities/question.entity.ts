@@ -17,7 +17,7 @@ export class Question {
   userId: number;
 
   @Field(() => User, { description: 'Question User Information ' })
-  user: User;
+  users: User;
 
   @Field(() => [Answer], { description: 'Question User Information ' })
   answers: Answer[];

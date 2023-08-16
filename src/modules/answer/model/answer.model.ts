@@ -80,9 +80,9 @@ export class Answer extends Model {
   })
   createdBy: number;
 
-  @BelongsTo(() => User,{ onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  @BelongsTo(() => User)
   user: User;
 
-  @BelongsTo(() => Question, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  @BelongsTo(() => Question)
   question: Question;
 }

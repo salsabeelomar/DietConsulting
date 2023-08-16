@@ -29,12 +29,10 @@ export class AuthService {
 
   async getUserByEmailOrUser(email?: string, username?: string): Promise<User> {
     const getEmail = email && (await this.userService.getUserByEmail(email));
-    console.log('geting email', getEmail);
+
     const getUser =
       getEmail ??
       (username && (await this.userService.getUserByUser(username)));
-    console.log('geting email', getUser);
-    console.log('getEmail || getUser', getEmail || getUser);
 
     return getEmail || getUser;
   }

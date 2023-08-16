@@ -6,6 +6,7 @@ import {
   BelongsTo,
   HasMany,
   Table,
+  HasOne,
 } from 'sequelize-typescript';
 
 import { Answer } from 'src/modules/answer/model/answer.model';
@@ -21,6 +22,7 @@ export class Question extends Model {
     autoIncrement: true,
   })
   id: number;
+
   @Column(DataType.STRING)
   title: string;
 
@@ -54,9 +56,9 @@ export class Question extends Model {
   })
   createdBy: number;
 
-  @BelongsTo(() => User, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
-  user: User;
+  @BelongsTo(() => User)
+  users: User;
 
-  @HasMany(() => Answer, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  @HasMany(() => Answer)
   answers: Answer[];
 }

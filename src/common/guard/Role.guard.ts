@@ -26,7 +26,9 @@ export class Role implements CanActivate {
       trace: ' RuleGuard',
     });
 
+    console.log(request.user);
     const role = request.user.role;
+    console.log(role, roles);
 
     CheckExisting(roles === role, ForbiddenException, {
       msg: "Role doesn't Match",

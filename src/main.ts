@@ -5,6 +5,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from './common/guard/Auth.guard';
 import { UserService } from './modules/user/user.service';
 import { JwtService } from '@nestjs/jwt';
+import { Role } from './common/guard/Role.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -20,6 +21,7 @@ async function bootstrap() {
   const reflector = app.get<Reflector>(Reflector);
 
   app.useGlobalGuards(new AuthGuard(jwt, userService, reflector));
+  app.useGlobalGuards(new Role(reflector));
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
 }

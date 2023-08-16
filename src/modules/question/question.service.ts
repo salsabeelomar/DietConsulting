@@ -64,7 +64,7 @@ export class QuestionService {
       limit: LIMIT,
       order: [['createdAt', 'DESC']],
     });
-
+    console.log(questions);
     this.winstonLogger.log(` Get All Questions Successfully `);
 
     return questions;

@@ -3,11 +3,13 @@ import {
   Column,
   DataType,
   ForeignKey,
+  HasOne,
   Model,
   Table,
 } from 'sequelize-typescript';
 import { regexPassword } from 'src/common/constant/passwordRegex';
 import { Roles } from 'src/common/types/role.type';
+import { Question } from 'src/modules/question/model/question.model';
 
 @Table({
   tableName: 'users',
@@ -83,6 +85,6 @@ export class User extends Model {
   })
   createdBy: number;
 
-  @BelongsTo(() => User, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  @BelongsTo(() => User)
   user: User;
 }

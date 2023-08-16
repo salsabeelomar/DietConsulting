@@ -1,0 +1,20 @@
+type User @model {
+  # Question id
+  id: ID!
+  # User Title
+  email: String!
+  # User Role
+  role: Role!
+  # User FirstName
+  fname: String!
+  # User userName
+  username: String!
+  # User MiddleName
+  mname: String!
+  # User LastName
+  lname: String!
+  # User Creation Time
+  createdAt: DateTime!
+  # User Updated Time
+  updatedAt: DateTime!
+}

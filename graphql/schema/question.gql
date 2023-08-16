@@ -1,0 +1,18 @@
+type Question @model {
+  # Question id
+  id: ID!
+  # Question Title
+  title: String!
+  # Question Description
+  description: String!
+  # Question user id
+  userId: ID!
+  # Question User Information
+  users: User!
+  # Question User Information
+  answers: [Answer!]!
+  # Question Creation Time
+  createdAt: DateTime!
+  # Question Updated Time
+  updatedAt: DateTime!
+}
